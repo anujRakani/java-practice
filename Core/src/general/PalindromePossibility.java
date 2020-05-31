@@ -27,10 +27,7 @@ public class PalindromePossibility {
 		
 		System.out.println("even: "+evenCount+"   odd: " + oddCount);
 		
-		if (oddCount > 1 && hm.size() == 1) {
-			// if odd count not 1 but only one character
-			return "Yes";
-		} else if (oddCount == 0 && evenCount > 0) {
+		if (oddCount == 0 && evenCount > 0) {
 			return "Yes";
 		} else if (oddCount == 1 && evenCount >= 0) {
 			// if one odd and count value is 1 and all other even
