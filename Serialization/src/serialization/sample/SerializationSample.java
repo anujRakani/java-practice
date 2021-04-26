@@ -1,4 +1,4 @@
-package serializatin.sample;
+package serialization.sample;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -7,7 +7,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
 class SelectiveSerialization implements Serializable {
 	String str1, str2;

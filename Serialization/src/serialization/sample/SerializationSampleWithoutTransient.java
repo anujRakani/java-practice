@@ -1,14 +1,6 @@
-package serializatin.sample;
+package serialization.sample;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInput;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutput;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.io.*;
 
 class SelectiveSerializationWithoutTransient implements Serializable {
 	int int1, int2, int3, int4;
@@ -23,6 +15,7 @@ class SelectiveSerializationWithoutTransient implements Serializable {
 		str2 = "two";
 	}
 
+	@Serial
 	private void writeObject(ObjectOutputStream out) throws IOException
 	{
 		out.writeInt(int1);
@@ -30,6 +23,7 @@ class SelectiveSerializationWithoutTransient implements Serializable {
 		out.writeObject(str1);
 	}
 
+	@Serial
 	private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException
 	{
 		int1 = in.readInt();
@@ -39,7 +33,7 @@ class SelectiveSerializationWithoutTransient implements Serializable {
 
 	@Override
 	public String toString() {
-		return Integer.toString(int1) + Integer.toString(int2) + Integer.toString(int3) + Integer.toString(int4) + str1 + str2;
+		return int1 + int2 + int3 + int4 + str1 + str2;
 	}
 }
 
@@ -53,7 +47,7 @@ public class SerializationSampleWithoutTransient {
 			out.writeObject(selectiveSerializationWrite); 
 			out.close(); 
 
-			// deserailize from file to object 
+			// deserialize from file to object
 			ObjectInput in = new ObjectInputStream(new FileInputStream("selectiveSerialization.txt")); 
 
 			SelectiveSerializationWithoutTransient selectiveSerializationRead = (SelectiveSerializationWithoutTransient) in.readObject(); 
