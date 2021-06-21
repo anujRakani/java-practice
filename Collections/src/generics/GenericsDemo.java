@@ -54,7 +54,7 @@ public class GenericsDemo {
 
         GenericsDemo gd = new GenericsDemo();
 
-        List<A> listA = new ArrayList<A>();
+        List<A> listA = new ArrayList<>();
 //        gd.processElements(listA);                 //ERROR
 //        gd.processElementsType(listA);             //ERROR
 //        List<? extends BexA> listBexAA = listA;    //ERROR as it is another version of above line
@@ -72,6 +72,15 @@ public class GenericsDemo {
         List<DexBexA> listD = new ArrayList<>();
         gd.processElements(listD);
         List<? extends BexA> listBexAD = listD;
+
+        ////////////////////////////////////////////////////
+        List<? extends A> exA = new ArrayList<>();
+//        listA.add(exA);             // ERROR but below is allowed!
+        listA.addAll(exA);
+//
+//        A a = new A();
+//        BexA bexA = a;
+//        bexA.getValue();
 
 
         ////////////////////////////////////////////////////
